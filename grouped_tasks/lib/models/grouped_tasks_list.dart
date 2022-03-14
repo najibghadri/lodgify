@@ -45,8 +45,9 @@ class GroupedTasksList with _$GroupedTasksList {
     }
 
     return copyWith(
-        groups: groups,
-        progress: newCheckedSum / sum,
-        checkedSum: newCheckedSum);
+      groups: groups,
+      progress: newCheckedSum / sum,
+      checkedSum: newCheckedSum,
+    );
   }
 }

@@ -36,7 +36,7 @@ class GroupedTasksWidget extends HookWidget {
             value: groupTasks.progress,
           ),
           ExpansionPanelList(
-            key: UniqueKey(),
+            key: Key(groupTasks.groups.length.toString()),
             children: groupTasks.groups
                 .map(
                   (group) => ExpansionPanel(
