@@ -1,6 +1,6 @@
-# lodgify
+# lodgify homework
 
-A new Flutter project.
+Had to copy the api gist provided since it contains inconsistent fields. Not sure if this was intentional or it needs to be updated 😄
 
 ## Getting Started
 
