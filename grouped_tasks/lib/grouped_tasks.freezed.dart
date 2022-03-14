@@ -116,8 +116,9 @@ class __$GroupedTasksListCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GroupedTasksList implements _GroupedTasksList {
-  _$_GroupedTasksList({required this.groups, required this.progress});
+class _$_GroupedTasksList extends _GroupedTasksList {
+  _$_GroupedTasksList({required this.groups, required this.progress})
+      : super._();
 
   @override
   final List<TaskGroup> groups;
@@ -150,10 +151,11 @@ class _$_GroupedTasksList implements _GroupedTasksList {
       __$GroupedTasksListCopyWithImpl<_GroupedTasksList>(this, _$identity);
 }
 
-abstract class _GroupedTasksList implements GroupedTasksList {
+abstract class _GroupedTasksList extends GroupedTasksList {
   factory _GroupedTasksList(
       {required List<TaskGroup> groups,
       required double progress}) = _$_GroupedTasksList;
+  _GroupedTasksList._() : super._();
 
   @override
   List<TaskGroup> get groups;
