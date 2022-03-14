@@ -19,10 +19,15 @@ class _$GroupedTasksListTearOff {
   const _$GroupedTasksListTearOff();
 
   _GroupedTasksList call(
-      {required List<TaskGroup> groups, required double progress}) {
+      {required List<TaskGroup> groups,
+      required double progress,
+      required double sum,
+      required double checkedSum}) {
     return _GroupedTasksList(
       groups: groups,
       progress: progress,
+      sum: sum,
+      checkedSum: checkedSum,
     );
   }
 }
@@ -34,6 +39,8 @@ const $GroupedTasksList = _$GroupedTasksListTearOff();
 mixin _$GroupedTasksList {
   List<TaskGroup> get groups => throw _privateConstructorUsedError;
   double get progress => throw _privateConstructorUsedError;
+  double get sum => throw _privateConstructorUsedError;
+  double get checkedSum => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GroupedTasksListCopyWith<GroupedTasksList> get copyWith =>
@@ -45,7 +52,8 @@ abstract class $GroupedTasksListCopyWith<$Res> {
   factory $GroupedTasksListCopyWith(
           GroupedTasksList value, $Res Function(GroupedTasksList) then) =
       _$GroupedTasksListCopyWithImpl<$Res>;
-  $Res call({List<TaskGroup> groups, double progress});
+  $Res call(
+      {List<TaskGroup> groups, double progress, double sum, double checkedSum});
 }
 
 /// @nodoc
@@ -61,6 +69,8 @@ class _$GroupedTasksListCopyWithImpl<$Res>
   $Res call({
     Object? groups = freezed,
     Object? progress = freezed,
+    Object? sum = freezed,
+    Object? checkedSum = freezed,
   }) {
     return _then(_value.copyWith(
       groups: groups == freezed
@@ -70,6 +80,14 @@ class _$GroupedTasksListCopyWithImpl<$Res>
       progress: progress == freezed
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
+              as double,
+      sum: sum == freezed
+          ? _value.sum
+          : sum // ignore: cast_nullable_to_non_nullable
+              as double,
+      checkedSum: checkedSum == freezed
+          ? _value.checkedSum
+          : checkedSum // ignore: cast_nullable_to_non_nullable
               as double,
     ));
   }
@@ -82,7 +100,8 @@ abstract class _$GroupedTasksListCopyWith<$Res>
           _GroupedTasksList value, $Res Function(_GroupedTasksList) then) =
       __$GroupedTasksListCopyWithImpl<$Res>;
   @override
-  $Res call({List<TaskGroup> groups, double progress});
+  $Res call(
+      {List<TaskGroup> groups, double progress, double sum, double checkedSum});
 }
 
 /// @nodoc
@@ -100,6 +119,8 @@ class __$GroupedTasksListCopyWithImpl<$Res>
   $Res call({
     Object? groups = freezed,
     Object? progress = freezed,
+    Object? sum = freezed,
+    Object? checkedSum = freezed,
   }) {
     return _then(_GroupedTasksList(
       groups: groups == freezed
@@ -110,6 +131,14 @@ class __$GroupedTasksListCopyWithImpl<$Res>
           ? _value.progress
           : progress // ignore: cast_nullable_to_non_nullable
               as double,
+      sum: sum == freezed
+          ? _value.sum
+          : sum // ignore: cast_nullable_to_non_nullable
+              as double,
+      checkedSum: checkedSum == freezed
+          ? _value.checkedSum
+          : checkedSum // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -117,17 +146,25 @@ class __$GroupedTasksListCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GroupedTasksList extends _GroupedTasksList {
-  _$_GroupedTasksList({required this.groups, required this.progress})
+  _$_GroupedTasksList(
+      {required this.groups,
+      required this.progress,
+      required this.sum,
+      required this.checkedSum})
       : super._();
 
   @override
   final List<TaskGroup> groups;
   @override
   final double progress;
+  @override
+  final double sum;
+  @override
+  final double checkedSum;
 
   @override
   String toString() {
-    return 'GroupedTasksList(groups: $groups, progress: $progress)';
+    return 'GroupedTasksList(groups: $groups, progress: $progress, sum: $sum, checkedSum: $checkedSum)';
   }
 
   @override
@@ -136,14 +173,19 @@ class _$_GroupedTasksList extends _GroupedTasksList {
         (other.runtimeType == runtimeType &&
             other is _GroupedTasksList &&
             const DeepCollectionEquality().equals(other.groups, groups) &&
-            const DeepCollectionEquality().equals(other.progress, progress));
+            const DeepCollectionEquality().equals(other.progress, progress) &&
+            const DeepCollectionEquality().equals(other.sum, sum) &&
+            const DeepCollectionEquality()
+                .equals(other.checkedSum, checkedSum));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(groups),
-      const DeepCollectionEquality().hash(progress));
+      const DeepCollectionEquality().hash(progress),
+      const DeepCollectionEquality().hash(sum),
+      const DeepCollectionEquality().hash(checkedSum));
 
   @JsonKey(ignore: true)
   @override
@@ -154,13 +196,19 @@ class _$_GroupedTasksList extends _GroupedTasksList {
 abstract class _GroupedTasksList extends GroupedTasksList {
   factory _GroupedTasksList(
       {required List<TaskGroup> groups,
-      required double progress}) = _$_GroupedTasksList;
+      required double progress,
+      required double sum,
+      required double checkedSum}) = _$_GroupedTasksList;
   _GroupedTasksList._() : super._();
 
   @override
   List<TaskGroup> get groups;
   @override
   double get progress;
+  @override
+  double get sum;
+  @override
+  double get checkedSum;
   @override
   @JsonKey(ignore: true)
   _$GroupedTasksListCopyWith<_GroupedTasksList> get copyWith =>
