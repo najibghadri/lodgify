@@ -33,26 +33,33 @@ class GroupedTasksList with _$GroupedTasksList {
     required int taskIndex,
     required bool checked,
   }) {
-    final task =
-        groups[taskGroupIndex].tasks[taskIndex].copyWith(checked: checked);
-    groups[taskGroupIndex].tasks[taskIndex] = task;
+    final group = this.groups[taskGroupIndex];
+    if (checked == group.tasks[taskIndex].checked) {
+      return this;
+    }
+    final newTask = group.tasks[taskIndex].copyWith(checked: checked);
 
-    final isDone = groups[taskGroupIndex].tasks.fold(true, (bool val, task) {
+    group.tasks[taskIndex] = newTask;
+
+    final newGroupIsDone = group.tasks.fold(true, (bool val, task) {
       return val && task.checked;
     });
-    groups[taskGroupIndex] = groups[taskGroupIndex].copyWith(isDone: isDone);
+    this.groups[taskGroupIndex] = group.copyWith(isDone: newGroupIsDone);
 
-    var newCheckedSum = checkedSum;
+    var newCheckedSum = this.checkedSum;
     if (checked) {
-      newCheckedSum += task.value;
+      newCheckedSum += newTask.value;
     } else {
-      newCheckedSum -= task.value;
+      newCheckedSum -= newTask.value;
     }
 
     return copyWith(
-      groups: groups,
-      progress: newCheckedSum / sum,
+      groups: this.groups,
+      progress: newCheckedSum / this.sum,
       checkedSum: newCheckedSum,
     );
   }
 }
+
+
+// ignore_for_file: unnecessary_this
