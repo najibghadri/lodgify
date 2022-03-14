@@ -12,12 +12,11 @@ class GroupedTasksWidget extends HookWidget {
   Widget build(BuildContext context) {
     final groupTasks = useValueListenable(groupTasksNotifier);
 
-    final expansions =
-        useState(List<bool>.generate(groupTasks.groups.length, (_) => false));
+    final expansions = useState(<bool>[]);
 
     useEffect(() {
-      expansions.value =
-          List<bool>.generate(groupTasks.groups.length, (_) => false);
+      expansions.value = List<bool>.generate(groupTasks.groups.length,
+          (i) => i == 0); // first group open by default
     }, [groupTasks.groups.length]);
 
     return Container(
@@ -46,7 +45,7 @@ class GroupedTasksWidget extends HookWidget {
           ExpansionPanelList(
             expandedHeaderPadding: EdgeInsets.zero,
             elevation: 0,
-            dividerColor: Colors.transparent,
+            // dividerColor: Colors.transparent,
             key: Key(groupTasks.groups.length.toString()),
             expansionCallback: (index, isExpanded) {
               final newExpansions = [...expansions.value];
