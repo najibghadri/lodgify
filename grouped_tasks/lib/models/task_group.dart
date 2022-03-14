@@ -11,20 +11,23 @@ class TaskGroup with _$TaskGroup {
     required String name,
     required List<Task> tasks,
     required int taskGroupIndex,
+    required bool isDone,
   }) = _TaskGroup;
 
   static TaskGroup fromJson(
     dynamic jsonData,
     int taskGroupIndex,
   ) {
-    Iterable tasks = jsonData[_TaskGroupFields.tasks];
+    final tasks = List<Task>.from((jsonData[_TaskGroupFields.tasks] as Iterable)
+        .mapIndexed((i, e) => Task.fromJson(e, taskGroupIndex, i)));
+    bool isDone = tasks.fold(true, (val, task) {
+      return val && task.checked;
+    });
     return TaskGroup(
       name: jsonData[_TaskGroupFields.name] as String,
-      tasks: List<Task>.from(
-          tasks.mapIndexed((i, e) => Task.fromJson(e, taskGroupIndex, i))),
+      tasks: tasks,
       taskGroupIndex: taskGroupIndex,
+      isDone: isDone,
     );
   }
-
-  // TODO copy with / tasks
 }

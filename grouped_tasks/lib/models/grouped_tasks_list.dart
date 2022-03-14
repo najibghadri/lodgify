@@ -37,6 +37,11 @@ class GroupedTasksList with _$GroupedTasksList {
         groups[taskGroupIndex].tasks[taskIndex].copyWith(checked: checked);
     groups[taskGroupIndex].tasks[taskIndex] = task;
 
+    final isDone = groups[taskGroupIndex].tasks.fold(true, (bool val, task) {
+      return val && task.checked;
+    });
+    groups[taskGroupIndex] = groups[taskGroupIndex].copyWith(isDone: isDone);
+
     var newCheckedSum = checkedSum;
     if (checked) {
       newCheckedSum += task.value;

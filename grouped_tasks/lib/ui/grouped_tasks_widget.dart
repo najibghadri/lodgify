@@ -12,6 +12,14 @@ class GroupedTasksWidget extends HookWidget {
   Widget build(BuildContext context) {
     final groupTasks = useValueListenable(groupTasksNotifier);
 
+    final expansions =
+        useState(List<bool>.generate(groupTasks.groups.length, (_) => false));
+
+    useEffect(() {
+      expansions.value =
+          List<bool>.generate(groupTasks.groups.length, (_) => false);
+    }, [groupTasks.groups.length]);
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -30,40 +38,64 @@ class GroupedTasksWidget extends HookWidget {
             style: TextStyle(fontSize: 40),
           ),
           Text(
-            groupTasks.progress.toString(),
+            groupTasks.progress.toStringAsFixed(2),
           ),
           LinearProgressIndicator(
             value: groupTasks.progress,
           ),
           ExpansionPanelList(
+            expandedHeaderPadding: EdgeInsets.zero,
+            elevation: 0,
+            dividerColor: Colors.transparent,
             key: Key(groupTasks.groups.length.toString()),
+            expansionCallback: (index, isExpanded) {
+              final newExpansions = [...expansions.value];
+              newExpansions[index] = !isExpanded;
+              expansions.value = newExpansions;
+            },
             children: groupTasks.groups
-                .map(
-                  (group) => ExpansionPanel(
-                      headerBuilder: (BuildContext context, bool isExpanded) {
-                        return ListTile(
-                          title: Text(group.name),
-                        );
-                      },
-                      body: Column(
-                        children: group.tasks
-                            .map(
-                              (task) => CheckboxListTile(
-                                onChanged: (value) {
-                                  if (value != null) {
-                                    groupTasksNotifier.updateTaskCheck(
-                                        taskGroupIndex: task.taskGroupIndex,
-                                        taskIndex: task.taskIndex,
-                                        checked: value);
-                                  }
-                                },
-                                value: task.checked,
-                                title: Text(task.description),
-                              ),
-                            )
-                            .toList(),
-                      ),
-                      isExpanded: true),
+                .mapIndexed(
+                  (index, group) => ExpansionPanel(
+                    canTapOnHeader: true,
+                    headerBuilder: (BuildContext context, bool isExpanded) {
+                      return ListTile(
+                        leading: Icon(
+                          group.isDone
+                              ? LodgifyIcons.booking_ok
+                              : LodgifyIcons.booking_features,
+                        ),
+                        title: Text(group.name),
+                        trailing:
+                            Text(expansions.value[index] ? 'Hide' : 'Show'),
+                      );
+                    },
+                    body: Column(
+                      children: group.tasks
+                          .map(
+                            (task) => ListTile(
+                              onTap: () {
+                                groupTasksNotifier.updateTaskCheck(
+                                    taskGroupIndex: task.taskGroupIndex,
+                                    taskIndex: task.taskIndex,
+                                    checked: !task.checked);
+                              },
+                              leading: Checkbox(
+                                  value: task.checked,
+                                  onChanged: (value) {
+                                    if (value != null) {
+                                      groupTasksNotifier.updateTaskCheck(
+                                          taskGroupIndex: task.taskGroupIndex,
+                                          taskIndex: task.taskIndex,
+                                          checked: value);
+                                    }
+                                  }),
+                              title: Text(task.description),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                    isExpanded: expansions.value[index],
+                  ),
                 )
                 .toList(),
           )

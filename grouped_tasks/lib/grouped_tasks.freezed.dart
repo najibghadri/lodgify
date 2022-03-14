@@ -222,11 +222,13 @@ class _$TaskGroupTearOff {
   _TaskGroup call(
       {required String name,
       required List<Task> tasks,
-      required int taskGroupIndex}) {
+      required int taskGroupIndex,
+      required bool isDone}) {
     return _TaskGroup(
       name: name,
       tasks: tasks,
       taskGroupIndex: taskGroupIndex,
+      isDone: isDone,
     );
   }
 }
@@ -239,6 +241,7 @@ mixin _$TaskGroup {
   String get name => throw _privateConstructorUsedError;
   List<Task> get tasks => throw _privateConstructorUsedError;
   int get taskGroupIndex => throw _privateConstructorUsedError;
+  bool get isDone => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TaskGroupCopyWith<TaskGroup> get copyWith =>
@@ -249,7 +252,7 @@ mixin _$TaskGroup {
 abstract class $TaskGroupCopyWith<$Res> {
   factory $TaskGroupCopyWith(TaskGroup value, $Res Function(TaskGroup) then) =
       _$TaskGroupCopyWithImpl<$Res>;
-  $Res call({String name, List<Task> tasks, int taskGroupIndex});
+  $Res call({String name, List<Task> tasks, int taskGroupIndex, bool isDone});
 }
 
 /// @nodoc
@@ -265,6 +268,7 @@ class _$TaskGroupCopyWithImpl<$Res> implements $TaskGroupCopyWith<$Res> {
     Object? name = freezed,
     Object? tasks = freezed,
     Object? taskGroupIndex = freezed,
+    Object? isDone = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -279,6 +283,10 @@ class _$TaskGroupCopyWithImpl<$Res> implements $TaskGroupCopyWith<$Res> {
           ? _value.taskGroupIndex
           : taskGroupIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      isDone: isDone == freezed
+          ? _value.isDone
+          : isDone // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -289,7 +297,7 @@ abstract class _$TaskGroupCopyWith<$Res> implements $TaskGroupCopyWith<$Res> {
           _TaskGroup value, $Res Function(_TaskGroup) then) =
       __$TaskGroupCopyWithImpl<$Res>;
   @override
-  $Res call({String name, List<Task> tasks, int taskGroupIndex});
+  $Res call({String name, List<Task> tasks, int taskGroupIndex, bool isDone});
 }
 
 /// @nodoc
@@ -306,6 +314,7 @@ class __$TaskGroupCopyWithImpl<$Res> extends _$TaskGroupCopyWithImpl<$Res>
     Object? name = freezed,
     Object? tasks = freezed,
     Object? taskGroupIndex = freezed,
+    Object? isDone = freezed,
   }) {
     return _then(_TaskGroup(
       name: name == freezed
@@ -320,6 +329,10 @@ class __$TaskGroupCopyWithImpl<$Res> extends _$TaskGroupCopyWithImpl<$Res>
           ? _value.taskGroupIndex
           : taskGroupIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      isDone: isDone == freezed
+          ? _value.isDone
+          : isDone // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -328,7 +341,10 @@ class __$TaskGroupCopyWithImpl<$Res> extends _$TaskGroupCopyWithImpl<$Res>
 
 class _$_TaskGroup implements _TaskGroup {
   _$_TaskGroup(
-      {required this.name, required this.tasks, required this.taskGroupIndex});
+      {required this.name,
+      required this.tasks,
+      required this.taskGroupIndex,
+      required this.isDone});
 
   @override
   final String name;
@@ -336,10 +352,12 @@ class _$_TaskGroup implements _TaskGroup {
   final List<Task> tasks;
   @override
   final int taskGroupIndex;
+  @override
+  final bool isDone;
 
   @override
   String toString() {
-    return 'TaskGroup(name: $name, tasks: $tasks, taskGroupIndex: $taskGroupIndex)';
+    return 'TaskGroup(name: $name, tasks: $tasks, taskGroupIndex: $taskGroupIndex, isDone: $isDone)';
   }
 
   @override
@@ -350,7 +368,8 @@ class _$_TaskGroup implements _TaskGroup {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.tasks, tasks) &&
             const DeepCollectionEquality()
-                .equals(other.taskGroupIndex, taskGroupIndex));
+                .equals(other.taskGroupIndex, taskGroupIndex) &&
+            const DeepCollectionEquality().equals(other.isDone, isDone));
   }
 
   @override
@@ -358,7 +377,8 @@ class _$_TaskGroup implements _TaskGroup {
       runtimeType,
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(tasks),
-      const DeepCollectionEquality().hash(taskGroupIndex));
+      const DeepCollectionEquality().hash(taskGroupIndex),
+      const DeepCollectionEquality().hash(isDone));
 
   @JsonKey(ignore: true)
   @override
@@ -370,7 +390,8 @@ abstract class _TaskGroup implements TaskGroup {
   factory _TaskGroup(
       {required String name,
       required List<Task> tasks,
-      required int taskGroupIndex}) = _$_TaskGroup;
+      required int taskGroupIndex,
+      required bool isDone}) = _$_TaskGroup;
 
   @override
   String get name;
@@ -378,6 +399,8 @@ abstract class _TaskGroup implements TaskGroup {
   List<Task> get tasks;
   @override
   int get taskGroupIndex;
+  @override
+  bool get isDone;
   @override
   @JsonKey(ignore: true)
   _$TaskGroupCopyWith<_TaskGroup> get copyWith =>
