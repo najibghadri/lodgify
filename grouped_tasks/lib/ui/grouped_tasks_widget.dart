@@ -1,5 +1,6 @@
 part of grouped_tasks;
 
+// Inputs: grouped tasks stateNotifier
 class GroupedTasks extends StatelessWidget {
   const GroupedTasks({Key? key}) : super(key: key);
 

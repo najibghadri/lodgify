@@ -1,19 +1,20 @@
 part of grouped_tasks;
 
-class GroupedTasksList extends Equatable {
-  final List<TaskGroup> groups;
+@freezed
+class GroupedTasksList with _$GroupedTasksList {
+  factory GroupedTasksList({
+    required List<TaskGroup> groups,
+    required double progress,
+  }) = _GroupedTasksList;
 
-  const GroupedTasksList({
-    required this.groups,
-  });
-
-  @override
-  List<Object?> get props => [groups];
+  static final empty = GroupedTasksList(groups: [], progress: 0.0);
 
   static GroupedTasksList fromJson(dynamic jsonData) {
-    return GroupedTasksList(
-      groups: List<TaskGroup>.from((jsonData as Iterable)
-          .mapIndexed((i, e) => TaskGroup.fromJson(e, i))),
-    );
+    final groups = List<TaskGroup>.from(
+        (jsonData as Iterable).mapIndexed((i, e) => TaskGroup.fromJson(e, i)));
+
+    final progress = calculate_progress(groups);
+
+    return GroupedTasksList(groups: groups, progress: progress);
   }
 }

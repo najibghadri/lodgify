@@ -5,20 +5,13 @@ class _TaskGroupFields {
   static const tasks = 'tasks';
 }
 
-class TaskGroup extends Equatable {
-  final String name;
-  final List<Task> tasks;
-
-  final int taskGroupIndex;
-
-  const TaskGroup({
-    required this.name,
-    required this.tasks,
-    required this.taskGroupIndex,
-  });
-
-  @override
-  List<Object?> get props => [name, tasks];
+@freezed
+class TaskGroup with _$TaskGroup {
+  factory TaskGroup({
+    required String name,
+    required List<Task> tasks,
+    required int taskGroupIndex,
+  }) = _TaskGroup;
 
   static TaskGroup fromJson(
     dynamic jsonData,
@@ -32,4 +25,6 @@ class TaskGroup extends Equatable {
       taskGroupIndex: taskGroupIndex,
     );
   }
+
+  // TODO copy with / tasks
 }

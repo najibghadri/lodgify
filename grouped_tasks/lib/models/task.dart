@@ -6,24 +6,15 @@ class _TaskFields {
   static const checked = 'checked';
 }
 
-class Task extends Equatable {
-  final String description;
-  final int value;
-  final bool checked;
-
-  final int taskGroupIndex;
-  final int taskIndex;
-
-  const Task({
-    required this.description,
-    required this.value,
-    required this.checked,
-    required this.taskGroupIndex,
-    required this.taskIndex,
-  });
-
-  @override
-  List<Object?> get props => [description, value, checked];
+@freezed
+class Task with _$Task {
+  factory Task({
+    required String description,
+    required int value,
+    required bool checked,
+    required int taskGroupIndex,
+    required int taskIndex,
+  }) = _Task;
 
   static Task fromJson(
     dynamic jsonData,
