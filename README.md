@@ -1,16 +1,5 @@
 # lodgify homework
 
-Had to copy the api gist provided since it contains inconsistent fields. Not sure if this was intentional or it needs to be updated 😄
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Had to copy the api gist provided since it contains inconsistent fields. Not sure if this was intentional or it needs to be updated 😄
+- No UI packages were used, expandable and progressbar are custom components
+- Used flutter

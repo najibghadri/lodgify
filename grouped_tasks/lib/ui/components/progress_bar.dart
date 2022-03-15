@@ -6,12 +6,14 @@ class ProgressBar extends HookWidget {
     required this.value,
     required this.height,
     this.borderRadius,
+    this.textStyle,
     Key? key,
   }) : super(key: key);
 
   final double value;
   final double height;
   final BorderRadius? borderRadius;
+  final TextStyle? textStyle;
 
   static const minTextPos = 40.0;
 
@@ -50,6 +52,7 @@ class ProgressBar extends HookWidget {
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
                           value.toStringAsFixed(2),
+                          style: textStyle,
                         ),
                       ),
                       alignment: Alignment.centerRight,
