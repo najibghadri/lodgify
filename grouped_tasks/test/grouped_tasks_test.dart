@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:grouped_tasks/logic/progress_calc.dart';
 
-import 'package:grouped_tasks/grouped_tasks.dart';
+import 'test_data.dart';
 
 void main() {
-  test('adds one to input values', () {
-    // TODO calculate progressbar
-    // final calculator = Calculator();
-    // expect(calculator.addOne(2), 3);
-    // expect(calculator.addOne(-7), -6);
-    // expect(calculator.addOne(0), 1);
+  test('calculates total sum and normalized sum of tasks correctly', () {
+    final result = calculateSumAndCheckedSum(tasksGroupsTestData);
+
+    expect(result[0], 227);
+    expect(result[1], 81);
   });
 }
