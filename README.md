@@ -21,6 +21,9 @@ https://user-images.githubusercontent.com/11639734/158412050-20dc08e7-d594-4610-
 - The expandable rows and the progressbar are custom components using animations
 - Used an efficient calculation algorithm and unit tested it
 
+## extras
+- The UI smartly closes a group if it's done and opens the next not completed group. This behaviour can be improved however.
+
 ## improvement notes
 
 - Use local fonts and remove `google_fonts` in production
