@@ -39,7 +39,6 @@ class ExpandableTaskGroupList extends HookWidget {
             false,
             (int index, bool previousValue, expanded) =>
                 previousValue || expanded && !groupTasks.groups[index].isDone);
-        ;
 
         groupTasks.groups.forEachIndexed((index, taskGroup) {
           if (taskGroup.isDone && expansions.value[index]) {
