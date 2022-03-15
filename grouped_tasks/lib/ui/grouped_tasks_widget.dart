@@ -7,10 +7,6 @@ import 'package:grouped_tasks/ui/components/progress_bar.dart';
 
 import 'components/expandable_task_group.dart';
 
-// TODO: refactor into components later
-// TODO: use animation for custom expansion
-// TODO: custom progressbar or use package?
-
 class GroupedTasksWidget extends HookWidget {
   const GroupedTasksWidget({
     required this.groupTasksNotifier,
