@@ -52,7 +52,7 @@ class ProgressBar extends HookWidget {
                       child: Padding(
                         padding: const EdgeInsets.only(right: 10),
                         child: Text(
-                          value.toStringAsFixed(2),
+                          (value * 100.0).toStringAsFixed(0) + '%',
                           style: textStyle,
                         ),
                       ),

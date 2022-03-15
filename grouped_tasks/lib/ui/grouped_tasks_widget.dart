@@ -46,7 +46,8 @@ class GroupedTasksWidget extends HookWidget {
                     height: 24,
                     value: groupTasks.progress,
                     borderRadius: BorderRadius.circular(16),
-                    textStyle: TextStyle(),
+                    textStyle: const TextStyle(
+                        fontWeight: FontWeight.w600, color: Colors.white),
                   ),
                 ],
               ),
