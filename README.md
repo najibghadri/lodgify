@@ -1,6 +1,6 @@
 # Lodgify homework
 
-- Tested on iOS, Web and Android
+- Tested on Web, iOS and Android
 - The main component is a package: I made it like this because I think this is a component that would be reused on a page possibly multiple times. It exposes three main components:
   - `GroupedTasksList` which is a model and has `fromJson` method
   - `GroupedTasksNotifier` which is a ValueNotifier and has `updateTasks` and `updateTaskCheck` methods
