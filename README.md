@@ -19,7 +19,7 @@
 - Use local fonts and remove `google_fonts` in production
 - loading state using `shimmer`
 - UI regression tests
-- better themeing
+- Better themeing
 - etc, ...
 
 P.S.
