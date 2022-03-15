@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class ProgressBar extends HookWidget {
-  const ProgressBar({required this.value, required this.height, Key? key})
-      : super(key: key);
+  const ProgressBar({
+    required this.value,
+    required this.height,
+    this.borderRadius,
+    Key? key,
+  }) : super(key: key);
 
   final double value;
   final double height;
+  final BorderRadius? borderRadius;
 
   static const minTextPos = 40.0;
 
@@ -24,33 +29,36 @@ class ProgressBar extends HookWidget {
     return AnimatedBuilder(
       animation: animation,
       builder: (_, __) {
-        return Stack(
-          clipBehavior: Clip.hardEdge,
-          children: [
-            LinearProgressIndicator(
-              value: animation.value,
-              minHeight: height,
-            ),
-            LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints constraints) {
-                final width = constraints.maxWidth * animation.value;
-                final textPos = width > minTextPos ? width : minTextPos;
-                return SizedBox(
-                  width: textPos,
-                  height: height,
-                  child: Align(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: Text(
-                        value.toStringAsFixed(2),
+        return ClipRRect(
+          borderRadius: borderRadius,
+          child: Stack(
+            clipBehavior: Clip.hardEdge,
+            children: [
+              LinearProgressIndicator(
+                value: animation.value,
+                minHeight: height,
+              ),
+              LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  final width = constraints.maxWidth * animation.value;
+                  final textPos = width > minTextPos ? width : minTextPos;
+                  return SizedBox(
+                    width: textPos,
+                    height: height,
+                    child: Align(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Text(
+                          value.toStringAsFixed(2),
+                        ),
                       ),
+                      alignment: Alignment.centerRight,
                     ),
-                    alignment: Alignment.centerRight,
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         );
       },
     );

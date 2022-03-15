@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:collection/collection.dart';
 
 import 'package:grouped_tasks/logic/progress_calc.dart';
 import 'package:grouped_tasks/models/task_group.dart';

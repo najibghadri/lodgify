@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:collection/collection.dart';
 
 import 'package:grouped_tasks/logic/grouped_tasks_state_notifier.dart';
 import 'package:grouped_tasks/ui/components/progress_bar.dart';
@@ -25,9 +26,31 @@ class GroupedTasksWidget extends HookWidget {
     final expansions = useState(<bool>[]);
 
     useEffect(() {
-      expansions.value = List<bool>.generate(groupTasks.groups.length,
-          (i) => i == 0); // first group open by default
+      expansions.value =
+          List<bool>.generate(groupTasks.groups.length, (_) => false);
     }, [groupTasks.groups.length]);
+
+    expandGroup(index, isExpanded) {
+      final newExpansions = [...expansions.value];
+      newExpansions[index] = isExpanded;
+      expansions.value = newExpansions;
+    }
+
+    useEffect(() {
+      // opens the next not completed task group, and closes the completed ones
+      WidgetsBinding.instance!.addPostFrameCallback((_) {
+        var hasOpenedNext = false;
+        groupTasks.groups.forEachIndexed((index, taskGroup) {
+          if (taskGroup.isDone && expansions.value[index]) {
+            expandGroup(index, false);
+          }
+          if (!taskGroup.isDone && !hasOpenedNext) {
+            hasOpenedNext = true;
+            expandGroup(index, true);
+          }
+        });
+      });
+    }, [groupTasks]);
 
     return Material(
       borderRadius: BorderRadius.circular(8),
@@ -50,6 +73,7 @@ class GroupedTasksWidget extends HookWidget {
             ProgressBar(
               height: 20,
               value: groupTasks.progress,
+              borderRadius: BorderRadius.circular(10),
             ),
             const SizedBox(height: 10),
             Padding(
@@ -77,9 +101,7 @@ class GroupedTasksWidget extends HookWidget {
                     itemBuilder: (context, index) {
                       return ExpandableTaskGroup(
                         expansionCallback: () {
-                          final newExpansions = [...expansions.value];
-                          newExpansions[index] = !expansions.value[index];
-                          expansions.value = newExpansions;
+                          expandGroup(index, !expansions.value[index]);
                         },
                         groupTasksNotifier: groupTasksNotifier,
                         isExpanded: expansions.value[index],

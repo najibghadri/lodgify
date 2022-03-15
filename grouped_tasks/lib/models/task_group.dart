@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:grouped_tasks/models/task.dart';
+import 'package:collection/collection.dart';
 
 part 'task_group.freezed.dart';
 
