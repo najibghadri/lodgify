@@ -62,7 +62,10 @@ class ExpandableTaskGroupList extends HookWidget {
         ),
         child: ListView.separated(
           separatorBuilder: (context, index) {
-            return const Divider(height: 1);
+            return const Divider(
+              height: 1,
+              color: Color(0xFF999999),
+            );
           },
           physics: const NeverScrollableScrollPhysics(),
           key: Key(groupTasks.groups.length.toString()),
