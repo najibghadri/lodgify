@@ -1,5 +1,11 @@
 # Lodgify homework
 
+
+
+https://user-images.githubusercontent.com/11639734/158412050-20dc08e7-d594-4610-b428-04be9d762e10.mov
+
+
+
 - Tested on Web, iOS and Android
 - The main component is in a sub-package named `grouped_tasks`: I made it like this because I think this is a component that would be reused on a page possibly multiple times. It exposes three main components:
   - `GroupedTasksList` which is a model and has `fromJson` method
