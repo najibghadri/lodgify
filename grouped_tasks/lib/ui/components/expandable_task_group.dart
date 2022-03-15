@@ -63,6 +63,8 @@ class ExpandableTaskGroup extends HookWidget {
                   },
                   leading: Checkbox(
                       value: task.checked,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4)),
                       onChanged: (value) {
                         if (value != null) {
                           groupTasksNotifier.updateTaskCheck(
