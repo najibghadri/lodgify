@@ -42,7 +42,7 @@ final lodgifyTheme = ThemeData.light().copyWith(
     onSecondary: Colors.white,
     secondary: LodgifyColors.mint,
   ),
-  textTheme: GoogleFonts.openSansTextTheme(),
+  textTheme: GoogleFonts.sourceSansProTextTheme(),
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: const AppBarTheme(
     backgroundColor: Colors.white,

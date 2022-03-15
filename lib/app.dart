@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lodgify/ui/accordion_page.dart';
 
 class App extends StatelessWidget {
@@ -10,6 +11,8 @@ class App extends StatelessWidget {
       title: 'Logdify',
       theme: ThemeData(
         primarySwatch: Colors.green,
+        textTheme:
+            GoogleFonts.sourceSansProTextTheme(), // prod: use local assets
       ),
       home: const AccordionPage(),
     );
