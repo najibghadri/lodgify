@@ -26,7 +26,7 @@ class GroupedTasksWidget extends HookWidget {
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             width: 1,
-            color: const Color(0xFFCCCCCC), // TODO from theme
+            color: const Color(0xFFCCCCCC),
             style: BorderStyle.solid,
           ),
         ),
