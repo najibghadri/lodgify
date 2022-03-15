@@ -11,9 +11,18 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Logdify',
       theme: ThemeData(
-        primarySwatch: createMaterialColor(const Color(0xFF00B797)),
-        textTheme:
-            GoogleFonts.sourceSansProTextTheme(), // prod: use local assets
+        primarySwatch: createMaterialColor(LodgifyColors.mint),
+        textTheme: GoogleFonts.sourceSansProTextTheme(const TextTheme(
+            headline4: TextStyle(
+                fontSize: 22.0,
+                fontWeight: FontWeight.bold,
+                color: LodgifyColors.text),
+            bodyText1: TextStyle(fontSize: 18, color: LodgifyColors.text),
+            bodyText2: TextStyle(fontSize: 16, color: Colors.black),
+            caption: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+                color: LodgifyColors.caption))), // prod: use local assets
       ),
       home: const AccordionPage(),
     );

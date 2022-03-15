@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 class LodgifyColors {
   LodgifyColors._();
   static const Color mint = Color(0xFF00B797);
+  static const Color text = Color(0xFF333333);
+  static const Color caption = Color(0xFF999999);
   static const Color border = Color(0xFFCCCCCC);
-  static const Color notification = Color(0xFFC5EDFF);
   static final messageInputgrayColor = Colors.grey.shade100;
 }
 

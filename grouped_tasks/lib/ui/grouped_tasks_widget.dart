@@ -39,7 +39,7 @@ class GroupedTasksWidget extends HookWidget {
                 children: [
                   Text(
                     'Lodgify Grouped Tasks',
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                   const SizedBox(height: 16),
                   ProgressBar(

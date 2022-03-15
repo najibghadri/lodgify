@@ -38,19 +38,34 @@ class ExpandableTaskGroup extends HookWidget {
             taskGroup.isDone
                 ? LodgifyIcons.booking_ok
                 : LodgifyIcons.booking_features,
+            color: taskGroup.isDone
+                ? Theme.of(context).primaryColor
+                : Colors.black,
+            size: 32,
           ),
-          title: Text(taskGroup.name),
+          title: Text(
+            taskGroup.name,
+            style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                color:
+                    taskGroup.isDone ? Theme.of(context).primaryColor : null),
+          ),
           trailing: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(isExpanded ? 'Hide' : 'Show'),
+              Text(
+                isExpanded ? 'Hide' : 'Show',
+                style: Theme.of(context).textTheme.caption,
+              ),
+              const SizedBox(width: 4),
               Icon(
                 isExpanded
                     ? LodgifyIcons.arrow_line_up
                     : LodgifyIcons.arrow_line_down,
+                size: 18,
               )
             ],
           ),
+          minLeadingWidth: 0,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 7,
@@ -65,6 +80,7 @@ class ExpandableTaskGroup extends HookWidget {
               const SizedBox(height: 10),
               ...taskGroup.tasks.map(
                 (task) => ListTile(
+                  minLeadingWidth: 0,
                   onTap: () {
                     groupTasksNotifier.updateTaskCheck(
                         taskGroupIndex: task.taskGroupIndex,
@@ -83,7 +99,13 @@ class ExpandableTaskGroup extends HookWidget {
                               checked: value);
                         }
                       }),
-                  title: Text(task.description),
+                  title: Text(
+                    task.description,
+                    style: Theme.of(context).textTheme.bodyText2,
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    horizontal: 18,
+                  ),
                 ),
               ),
               const SizedBox(height: 10),
