@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:grouped_tasks/logic/grouped_tasks_state_notifier.dart';
+import 'package:grouped_tasks/ui/components/progress_bar.dart';
 
-import 'expandable_task_group.dart';
+import 'components/expandable_task_group.dart';
 
 // TODO: refactor into components later
 // TODO: use animation for custom expansion
@@ -46,12 +47,9 @@ class GroupedTasksWidget extends HookWidget {
               'Lodgify Grouped Tasks',
               style: TextStyle(fontSize: 40),
             ),
-            Text(
-              groupTasks.progress.toStringAsFixed(2),
-            ),
-            LinearProgressIndicator(
+            ProgressBar(
+              height: 20,
               value: groupTasks.progress,
-              minHeight: 20,
             ),
             const SizedBox(height: 10),
             Padding(
