@@ -31,17 +31,26 @@ class GroupedTasksWidget extends HookWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              'Lodgify Grouped Tasks',
-              style: TextStyle(fontSize: 40),
+            const SizedBox(height: 32),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Lodgify Grouped Tasks',
+                    style: Theme.of(context).textTheme.headline3,
+                  ),
+                  const SizedBox(height: 16),
+                  ProgressBar(
+                    height: 24,
+                    value: groupTasks.progress,
+                    borderRadius: BorderRadius.circular(16),
+                    textStyle: TextStyle(),
+                  ),
+                ],
+              ),
             ),
-            ProgressBar(
-              height: 24,
-              value: groupTasks.progress,
-              borderRadius: BorderRadius.circular(16),
-              textStyle: TextStyle(),
-            ),
-            const SizedBox(height: 10),
             Padding(
                 padding: const EdgeInsets.all(16),
                 child: ExpandableTaskGroupList(
