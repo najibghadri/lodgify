@@ -21,12 +21,13 @@ class AccordionPage extends HookWidget {
       backgroundColor: Colors.grey.shade200,
       body: SafeArea(
         child: SingleChildScrollView(
-            child: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-            child: GroupedTasksWidget(groupTasksNotifier: groupTasksNotifier),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+              child: GroupedTasksWidget(groupTasksNotifier: groupTasksNotifier),
+            ),
           ),
-        )),
+        ),
       ),
     );
   }
