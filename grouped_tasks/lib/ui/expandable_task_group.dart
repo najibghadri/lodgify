@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'package:grouped_tasks/grouped_tasks.dart';
+import 'package:grouped_tasks/logic/grouped_tasks_state_notifier.dart';
+import 'package:grouped_tasks/models/task_group.dart';
 import 'package:grouped_tasks/ui/icons/lodgify_icons_icons.dart';
 
 class ExpandableTaskGroup extends HookWidget {

@@ -1,4 +1,6 @@
-part of grouped_tasks;
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'task.freezed.dart';
 
 class _TaskFields {
   static const description = 'description';

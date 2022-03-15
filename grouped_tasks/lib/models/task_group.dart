@@ -1,4 +1,7 @@
-part of grouped_tasks;
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:grouped_tasks/models/task.dart';
+
+part 'task_group.freezed.dart';
 
 class _TaskGroupFields {
   static const name = 'name';

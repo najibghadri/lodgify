@@ -1,4 +1,9 @@
-part of grouped_tasks;
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'package:grouped_tasks/logic/progress_calc.dart';
+import 'package:grouped_tasks/models/task_group.dart';
+
+part 'grouped_tasks_list.freezed.dart';
 
 @freezed
 class GroupedTasksList with _$GroupedTasksList {

@@ -1,4 +1,4 @@
-import 'package:grouped_tasks/grouped_tasks.dart';
+import 'package:grouped_tasks/models/task_group.dart';
 
 List<double> calculateSumAndCheckedSum(List<TaskGroup> groups) {
   double sum = 0;

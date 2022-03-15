@@ -1,4 +1,8 @@
-part of grouped_tasks;
+import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+
+import 'package:grouped_tasks/logic/grouped_tasks_state_notifier.dart';
+import 'package:grouped_tasks/ui/expandable_task_group.dart';
 
 // TODO: refactor into components later
 // TODO: use animation for custom expansion
