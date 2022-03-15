@@ -33,6 +33,34 @@
       "search": [
         "booking-ok"
       ]
+    },
+    {
+      "uid": "3815bd135b073a2876c21a98f040a4c5",
+      "css": "arrow-line-up",
+      "code": 59394,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M500 377.7L782.7 687.5 812.5 654.9 500 312.5 187.5 654.9 217.3 687.5 500 377.7Z",
+        "width": 1000
+      },
+      "search": [
+        "arrow-line-up"
+      ]
+    },
+    {
+      "uid": "358b82e564379a83f7ea23b476a94829",
+      "css": "arrow-line-down",
+      "code": 59395,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M500 622.3L782.7 312.5 812.5 345.1 500 687.5 187.5 345.1 217.3 312.5 500 622.3Z",
+        "width": 1000
+      },
+      "search": [
+        "arrow-line-down"
+      ]
     }
   ]
 }

@@ -38,6 +38,7 @@ class ProgressBar extends HookWidget {
             children: [
               LinearProgressIndicator(
                 value: animation.value,
+                backgroundColor: Theme.of(context).primaryColor.withAlpha(32),
                 minHeight: height,
               ),
               LayoutBuilder(

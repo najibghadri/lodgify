@@ -40,7 +40,17 @@ class ExpandableTaskGroup extends HookWidget {
                 : LodgifyIcons.booking_features,
           ),
           title: Text(taskGroup.name),
-          trailing: Text(isExpanded ? 'Hide' : 'Show'),
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(isExpanded ? 'Hide' : 'Show'),
+              Icon(
+                isExpanded
+                    ? LodgifyIcons.arrow_line_up
+                    : LodgifyIcons.arrow_line_down,
+              )
+            ],
+          ),
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 16,
             vertical: 7,
