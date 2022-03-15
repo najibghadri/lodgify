@@ -18,7 +18,6 @@ class AccordionPage extends HookWidget {
       groupTasksNotifier.updateTasks(tasks);
     }, []);
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Center(

@@ -78,6 +78,11 @@ class GroupedTasksWidget extends HookWidget {
                     itemCount: groupTasks.groups.length,
                     itemBuilder: (context, index) {
                       return ExpandableTaskGroup(
+                        expansionCallback: () {
+                          final newExpansions = [...expansions.value];
+                          newExpansions[index] = !expansions.value[index];
+                          expansions.value = newExpansions;
+                        },
                         groupTasksNotifier: groupTasksNotifier,
                         isExpanded: expansions.value[index],
                         taskGroup: groupTasks.groups[index],
