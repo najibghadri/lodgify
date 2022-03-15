@@ -1,5 +1,9 @@
 part of grouped_tasks;
 
+// TODO: refactor into components later
+// TODO: use animation for custom expansion
+// TODO: custom progressbar or use package?
+
 class GroupedTasksWidget extends HookWidget {
   const GroupedTasksWidget({
     required this.groupTasksNotifier,
@@ -41,6 +45,7 @@ class GroupedTasksWidget extends HookWidget {
           ),
           LinearProgressIndicator(
             value: groupTasks.progress,
+            minHeight: 20,
           ),
           ExpansionPanelList(
             expandedHeaderPadding: EdgeInsets.zero,
@@ -97,7 +102,8 @@ class GroupedTasksWidget extends HookWidget {
                   ),
                 )
                 .toList(),
-          )
+          ),
+          const SizedBox(height: 10)
         ],
       ),
     );
