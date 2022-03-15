@@ -84,6 +84,38 @@ class GroupedTasksWidget extends HookWidget {
                             title: Text(groupTasks.groups[index].name),
                             trailing:
                                 Text(expansions.value[index] ? 'Hide' : 'Show'),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 4,
+                            ),
+                          ),
+                          Column(
+                            children: [
+                              const SizedBox(height: 10),
+                              ...groupTasks.groups[index].tasks.map(
+                                (task) => ListTile(
+                                  onTap: () {
+                                    groupTasksNotifier.updateTaskCheck(
+                                        taskGroupIndex: task.taskGroupIndex,
+                                        taskIndex: task.taskIndex,
+                                        checked: !task.checked);
+                                  },
+                                  leading: Checkbox(
+                                      value: task.checked,
+                                      onChanged: (value) {
+                                        if (value != null) {
+                                          groupTasksNotifier.updateTaskCheck(
+                                              taskGroupIndex:
+                                                  task.taskGroupIndex,
+                                              taskIndex: task.taskIndex,
+                                              checked: value);
+                                        }
+                                      }),
+                                  title: Text(task.description),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                            ],
                           ),
                         ],
                       );
