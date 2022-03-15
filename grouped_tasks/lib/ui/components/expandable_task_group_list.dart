@@ -35,13 +35,18 @@ class ExpandableTaskGroupList extends HookWidget {
     useEffect(() {
       // opens the next not completed task group, and closes the completed ones
       WidgetsBinding.instance!.addPostFrameCallback((_) {
-        var hasOpenedNext = false;
+        var hasExpandedAndNotDone = expansions.value.foldIndexed(
+            false,
+            (int index, bool previousValue, expanded) =>
+                previousValue || expanded && !groupTasks.groups[index].isDone);
+        ;
+
         groupTasks.groups.forEachIndexed((index, taskGroup) {
           if (taskGroup.isDone && expansions.value[index]) {
             expandGroup(index, false);
           }
-          if (!taskGroup.isDone && !hasOpenedNext) {
-            hasOpenedNext = true;
+          if (!taskGroup.isDone && !hasExpandedAndNotDone) {
+            hasExpandedAndNotDone = true;
             expandGroup(index, true);
           }
         });
