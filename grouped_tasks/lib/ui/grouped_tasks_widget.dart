@@ -48,7 +48,7 @@ class GroupedTasksWidget extends HookWidget {
               value: groupTasks.progress,
               minHeight: 20,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Padding(
               padding: const EdgeInsets.all(16),
               child: Material(
@@ -72,52 +72,10 @@ class GroupedTasksWidget extends HookWidget {
                     shrinkWrap: true,
                     itemCount: groupTasks.groups.length,
                     itemBuilder: (context, index) {
-                      return Column(
-                        children: [
-                          ListTile(
-                            onTap: () {},
-                            leading: Icon(
-                              groupTasks.groups[index].isDone
-                                  ? LodgifyIcons.booking_ok
-                                  : LodgifyIcons.booking_features,
-                            ),
-                            title: Text(groupTasks.groups[index].name),
-                            trailing:
-                                Text(expansions.value[index] ? 'Hide' : 'Show'),
-                            contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 4,
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              const SizedBox(height: 10),
-                              ...groupTasks.groups[index].tasks.map(
-                                (task) => ListTile(
-                                  onTap: () {
-                                    groupTasksNotifier.updateTaskCheck(
-                                        taskGroupIndex: task.taskGroupIndex,
-                                        taskIndex: task.taskIndex,
-                                        checked: !task.checked);
-                                  },
-                                  leading: Checkbox(
-                                      value: task.checked,
-                                      onChanged: (value) {
-                                        if (value != null) {
-                                          groupTasksNotifier.updateTaskCheck(
-                                              taskGroupIndex:
-                                                  task.taskGroupIndex,
-                                              taskIndex: task.taskIndex,
-                                              checked: value);
-                                        }
-                                      }),
-                                  title: Text(task.description),
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                            ],
-                          ),
-                        ],
+                      return ExpandableTaskGroup(
+                        groupTasksNotifier: groupTasksNotifier,
+                        isExpanded: expansions.value[index],
+                        taskGroup: groupTasks.groups[index],
                       );
                     },
                   ),

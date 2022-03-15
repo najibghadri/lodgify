@@ -9,6 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:grouped_tasks/logic/progress_calc.dart';
 import 'package:grouped_tasks/ui/icons/lodgify_icons_icons.dart';
+import 'package:grouped_tasks/ui/task_group_widget.dart';
 
 part 'grouped_tasks.freezed.dart';
 
