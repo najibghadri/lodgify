@@ -23,7 +23,10 @@ class AccordionPage extends HookWidget {
           child: Center(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-              child: GroupedTasksWidget(groupTasksNotifier: groupTasksNotifier),
+              child: GroupedTasksWidget(
+                groupTasksNotifier: groupTasksNotifier,
+                title: 'Lodgify Grouped Tasks',
+              ),
             ),
           ),
         ),

@@ -1,5 +1,22 @@
 # lodgify homework
 
-- Had to copy the api gist provided since it contains inconsistent fields. Not sure if this was intentional or it needs to be updated 😄
-- No UI packages were used, expandable and progressbar are custom components
-- Used flutter
+- Had to copy the api gist provided since it contains inconsistent fields. Not sure if this was intentional or it needs to be updated 😄. The tasks are fetched on startup from this gist url and parsed and the app initialized with them.
+- The main component is a package: I made it like this because I think this is a component that would be reused on a page possibly multiple times. It exposes three main components:
+  - `GroupedTasksList` which is a model and has `fromJson` method
+  - `GroupedTasksNotifier` which is a ValueNotifier and has `updateTasks` and `updateTaskCheck` methods
+  - `GroupedTasksWidget` which is the whole UI component which takes a `GroupedTasksNotifier` as prop and a title
+- for state management I started out using `riverpod` (a better `provider`), but found that using `flutter_hooks` and ValueNotifier is enough.
+- Used only 3 additional packages:
+  - `flutter_hooks` - a great library that brings hooks to flutter like they are in React, it allows for much cleaner code and reusability.
+  - `freezed` - productive model class generator with equality and deep copy helpers. This is actually optional, could have used `equatable` instead. Helps for immutable changes in `ValueNotifier`. (also needs `build_runner` and `freezed_annotation`)
+  - `google_fonts` for the custom font
+- The expandable rows and the progressbar are custom components using animations
+- Used an efficient calculation algorithm and unit tested it
+
+## improvement notes
+
+- Use local fonts and remove `google_fonts` in production
+- loading state using `shimmer`
+- UI regression tests
+- better themeing
+- etc, ...

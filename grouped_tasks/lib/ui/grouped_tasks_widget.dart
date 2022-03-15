@@ -8,10 +8,12 @@ import 'package:grouped_tasks/ui/components/progress_bar.dart';
 class GroupedTasksWidget extends HookWidget {
   const GroupedTasksWidget({
     required this.groupTasksNotifier,
+    required this.title,
     Key? key,
   }) : super(key: key);
 
   final GroupedTasksNotifier groupTasksNotifier;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class GroupedTasksWidget extends HookWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Lodgify Grouped Tasks',
+                    title,
                     style: Theme.of(context).textTheme.headline4,
                   ),
                   const SizedBox(height: 16),
